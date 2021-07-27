@@ -1,17 +1,26 @@
 {
   "name": "diff-practice",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "esbuild src/index.ts --bundle --watch --outfile=dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register -r jsdom-global/register ./**/*.test.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "element-mold": "0.0.2",
-    "esbuild": "^0.12.15"
+    "element-mold": "0.0.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^9.0.0",
+    "chai": "^4.3.4",
+    "esbuild": "^0.12.16",
+    "jsdom": "^16.6.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^9.0.3",
+    "ts-node": "^10.1.0"
   }
 }
