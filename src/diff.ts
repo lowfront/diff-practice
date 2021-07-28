@@ -8,12 +8,8 @@ export const diff1 = (parent: HTMLElement, currentElement: HTMLElement, nextElem
     return false;
   };
   const updateAttrs = (el1: HTMLElement, el2: HTMLElement) => {
-    if (el1.attributes.length !== el2.attributes.length) {
-      for (const {name, value} of el2.attributes as any) el1.setAttribute(name, value);
-      for (const {name} of el1.attributes as any) !el2.hasAttribute(name) && el1.removeAttribute(name);
-    } else if (Array.from(el1.attributes).some(({name, value}) => el2.getAttribute(name) !== value)) {
-      for (const {name, value} of el2.attributes as any) el1.setAttribute(name, value);
-    }
+    for (const {name, value} of el2.attributes as any) el1.setAttribute(name, value);
+    for (const {name} of [...el1.attributes as any]) !el2.hasAttribute(name) && el1.removeAttribute(name);
     if (!el1.children.length && !el2.children.length && el1.textContent !== el2.textContent) {
       el1.textContent = el2.textContent;
     }
